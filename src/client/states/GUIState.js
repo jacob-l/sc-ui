@@ -15,6 +15,8 @@ var engine = require('engine'),
     VitalsPane = require('../ui/panes/VitalsPane'),
     ShipPane = require('../ui/panes/ShipPane'),
       
+    LeaderboardPane = require('../ui/panes/LeaderboardPane'),
+    
     Alert = require('../ui/components/Alert'),
     AlertMessage = require('../ui/components/AlertMessage'),
     Modal = require('../ui/components/Modal'),
@@ -79,6 +81,7 @@ GUIState.prototype.create = function() {
   this.basePanel = new Panel(game, new BorderLayout(0, 0));
   this.basePanel.setPadding(6);
       
+  this.leaderboardPane = new LeaderboardPane(game);
   this.leftPane = new LeftPane(game);
   this.rightPane = new RightPane(game);
   // this.bottomPane = new BottomPane(game);
@@ -113,6 +116,7 @@ GUIState.prototype.create = function() {
   this.centerPanel.addPanel(Layout.LEFT, this.leftPane);
   // this.centerPanel.addPanel(Layout.RIGHT, this.targetPanel);
   
+  this.centerPanel.addPanel(Layout.RIGHT, this.leaderboardPane);
   this.basePanel.addPanel(Layout.TOP, this.topPanel);
   // this.basePanel.addPanel(Layout.BOTTOM, this.bottomPanel);
 
